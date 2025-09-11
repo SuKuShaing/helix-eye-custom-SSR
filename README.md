@@ -1,20 +1,6 @@
-# Helix Eye
+# Helix Eye de CSR a SSR
 
-### Install dependencies
+Este proyecto fue desarrollado compilan con webpack.
 
-```
-yarn 
-```
-
-### Development
-
-```
-yarn dev
-```
-
-
-### Production
-
-```
-yarn start
-```
+## Documentación para hacerlo con Vite
+https://vite.dev/guide/ssr
