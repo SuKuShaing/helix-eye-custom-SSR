@@ -1,11 +1,12 @@
 import express, { Express, Request, Response } from "express";
 import { config } from "./config";
 import { template } from "./render/template";
+import { render } from "./render";
 
 const app: Express = express();
 
 app.get('/{*splat}', (req: Request, res: Response) => {
-	res.send(template(req.url, `<p>Hola Mundo desde la ruta: ${req.url}</p>`));
+	res.send(render(req.url));
 });
 
 app.listen(config.PORT, () => {
