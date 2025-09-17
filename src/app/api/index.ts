@@ -4,6 +4,6 @@ export const getGalaxiesJSON = async () => {
     const data = await response.json()
     return data?.collection?.items;
   } catch (error) {
-    throw new Error(error)
+    throw new Error("Error in request galaxies", error)
   }
 }
