@@ -15,13 +15,9 @@ export const template = (url: string, html: string): string => {
         </head>
 
         <body>
-            <div id="app">
-                <h1>Helix App desde el servidor</h1>
-                <h2>Con la URL: ${url}</h2>
-                ${html}
-            </div>
+            <div id="app">${html}</div>
         </body>
-
+        <script src="app.js" type="text/javascript"></script>
         </html>
         `);
 };
