@@ -7,8 +7,10 @@ import { BrowserRouter } from 'react-router-dom';
 const container = document.getElementById('app');
 // const root = createRoot(container)
 
+const initialProps = window.__INITIAL_PROPS__;
+
 hydrateRoot( container,
 	<BrowserRouter>
-		<App />
+		<App {...initialProps} />
 	</BrowserRouter>
 );

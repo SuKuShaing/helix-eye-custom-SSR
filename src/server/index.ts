@@ -9,7 +9,7 @@ app.use(express.static('dist'));
 
 app.get('/galaxias', async (req: Request, res: Response) => {
 	const data = await getGalaxiesJSON();
-	console.log("🚀 ~ data:", data)
+	// console.log("🚀 ~ data:", data)
 	const initialProps = {
 		galaxies: data
 	};
