@@ -3,15 +3,27 @@ import { App } from "../../app/containers/App";
 import { StaticRouter } from "react-router-dom/server";
 import { renderToString } from "react-dom/server";
 import { template } from "./template";
+import { ServerStyleSheet } from "styled-components";
 
 export const render = (url: string, initialProps = {}) => {
-	const stream = renderToString(    // es un string de todo el html de la fc de react
-		<StaticRouter location={url}>
-			<App />
-		</StaticRouter>
-	);
+	try {
+		const sheet = new ServerStyleSheet();
 
-    const html = template(url, stream, initialProps);
+		const stream = renderToString(
+			// es un string de todo el html de la fc de react
+			sheet.collectStyles(
+				<StaticRouter location={url}>
+					<App />
+				</StaticRouter>
+			)
+		);
 
-    return html;
+		const styleTags = sheet.getStyleTags(); // obtenemos los estilos de styled-components aplicados en la app
+
+		const html = template(url, stream, initialProps, styleTags); // pasamos los estilos al template
+
+		return html;
+	} catch (error) {
+		console.log(error);
+	}
 };
