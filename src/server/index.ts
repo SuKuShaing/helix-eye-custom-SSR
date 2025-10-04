@@ -2,10 +2,18 @@ import express, { Express, Request, Response } from "express";
 import { config } from "./config";
 import { render } from "./render";
 import { getGalaxiesJSON } from "../app/api";
+import { webpackMiddleware } from "./middlewares/webpackMiddleware";
 
 const app: Express = express();
 
-app.use(express.static('dist'));
+const isDev = process.env.NODE_ENV !== "production";
+
+if(isDev) {
+	app.use(webpackMiddleware());
+} else {
+	app.use(express.static('dist'));
+}
+
 
 app.get('/galaxias', async (req: Request, res: Response) => {
 	const data = await getGalaxiesJSON();

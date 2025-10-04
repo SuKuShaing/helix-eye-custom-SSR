@@ -23,6 +23,7 @@ export const render = (url: string, initialProps = {}) => {
 		const html = template(url, stream, initialProps, styleTags); // pasamos los estilos al template
 
 		return html;
+
 	} catch (error) {
 		console.log(error);
 	}
